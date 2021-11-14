@@ -1,4 +1,2 @@
-# Calculadora123
+# Calculadora
  Calculadora com interface gráfica 
-
- Primeiro repositório criado da forma certa. 
