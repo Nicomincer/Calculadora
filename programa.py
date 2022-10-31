@@ -64,4 +64,5 @@ raiz.place(relx=0.6, rely=0.45, relwidth=0.2, relheight=0.15)
 
 fatorial = tkinter.Button(frame2, text="!")
 fatorial.place(relx=0.8, rely=0.45, relwidth=0.2, relheight=0.15)
+
 programa.mainloop()
