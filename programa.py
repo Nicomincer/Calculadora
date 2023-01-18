@@ -1,104 +1,133 @@
 import tkinter
 from tkinter import Tk
+global escrever_texto1
+global resultado
 
-
+resultado = ""
 programa = Tk()
 programa.title("Calculadora")
 programa.geometry("320x480")
-
-def zero():
-    escrever_texto1 = tkinter.Label(frame1, text="0", font=("Arial", 50), background='black', foreground='white')
-    escrever_texto1.place(relx=0, rely=0.45, relwidth=0.3, relheight=0.3)
-def um():
-    escrever_texto1 = tkinter.Label(frame1, text="1", font=("Arial", 50), background='black', foreground='white')
-    escrever_texto1.place(relx=0, rely=0.45, relwidth=0.3, relheight=0.3)
-def dois():
-    escrever_texto1 = tkinter.Label(frame1, text="2", font=("Arial", 50), background='black', foreground='white')
-    escrever_texto1.place(relx=0, rely=0.45, relwidth=0.3, relheight=0.3)
-def três():
-    escrever_texto1 = tkinter.Label(frame1, text="3", font=("Arial", 50), background='black', foreground='white')
-    escrever_texto1.place(relx=0, rely=0.45, relwidth=0.3, relheight=0.3)
-def quatro():
-    escrever_texto1 = tkinter.Label(frame1, text="4", font=("Arial", 50), background='black', foreground='white')
-    escrever_texto1.place(relx=0, rely=0.45, relwidth=0.3, relheight=0.3)
-def cinco():
-    escrever_texto1 = tkinter.Label(frame1, text="5", font=("Arial", 50), background='black', foreground='white')
-    escrever_texto1.place(relx=0, rely=0.45, relwidth=0.3, relheight=0.3)
-def seis():
-    escrever_texto1 = tkinter.Label(frame1, text="6", font=("Arial", 50), background='black', foreground='white')
-    escrever_texto1.place(relx=0, rely=0.45, relwidth=0.3, relheight=0.3)
-def sete():
-    escrever_texto1 = tkinter.Label(frame1, text="7", font=("Arial", 50), background='black', foreground='white')
-    escrever_texto1.place(relx=0, rely=0.45, relwidth=0.3, relheight=0.3)
-def oito():
-    escrever_texto1 = tkinter.Label(frame1, text="8", font=("Arial", 50), background='black', foreground='white')
-    escrever_texto1.place(relx=0, rely=0.45, relwidth=0.3, relheight=0.3)
-def nove():
-    escrever_texto1 = tkinter.Label(frame1, text="9", font=("Arial", 50), background='black', foreground='white')
-    escrever_texto1.place(relx=0, rely=0.45, relwidth=0.3, relheight=0.3)
-
 frame1 = tkinter.Frame(programa, bg='black')
-frame1.place(rely=0, relx=0, relwidth=1, relheight=0.4)
-
+frame1.place(rely=0, relx=0, relwidth=1, relheight=1)
 frame2 = tkinter.Frame(programa, bg="white")
 frame2.place(rely=0.4, relx=0, relwidth=1, relheight=1)
+escrever_texto1 = tkinter.Label(frame1, text="", font=("Arial", 50), background='black', foreground='white')
+escrever_texto1.place(relx=0, rely=0.1)
 
-sete = tkinter.Button(frame2, text="7", command=sete)
+def sete_number():
+    global resultado
+    resultado = resultado+"7"
+    escrever_texto1.configure(text=resultado)
+
+def oito_number():
+    global resultado
+    resultado = resultado+"8"
+    escrever_texto1.configure(text=resultado)
+def nove_number():
+    global resultado
+    resultado = resultado+"9"
+    escrever_texto1.configure(text=resultado)
+def seis_number():
+    global resultado
+    resultado = resultado+"6"
+    escrever_texto1.configure(text=resultado)
+def cinco_number():
+    global resultado
+    resultado = resultado+"5"
+    escrever_texto1.configure(text=resultado)
+def quatro_number():
+    global resultado
+    resultado = resultado+"4"
+    escrever_texto1.configure(text=resultado)
+def tres_number():
+    global resultado
+    resultado = resultado+"3"
+    escrever_texto1.configure(text=resultado)
+def dois_number():
+    global resultado
+    resultado = resultado+"2"
+    escrever_texto1.configure(text=resultado) 
+def um_number():
+    global resultado
+    resultado = resultado+"1"
+    escrever_texto1.configure(text=resultado)
+def zero_number():
+    global resultado
+    resultado = resultado+"0"
+    escrever_texto1.configure(text=resultado)
+
+def somar():
+
+    global resultado
+    resultado = resultado+"+"
+    escrever_texto1.configure(text=resultado)
+
+def limpar_tela():
+
+    global resultado
+    resultado = ""
+    escrever_texto1.configure(text=resultado)
+
+def result():
+    global resultado
+    a = float(resultado[0:resultado.index("+")])
+    b = float(resultado[resultado.index("+"):len(resultado)])
+    s = a+b
+    escrever_texto1.configure(text=f"{s}")
+
+
+sete = tkinter.Button(frame2, text="7", command=sete_number)
 sete.place(relx=0, rely=0, relwidth=0.2, relheight=0.15)
 
-oito = tkinter.Button(frame2, text="8", command=oito)
+oito = tkinter.Button(frame2, text="8", command=oito_number)
 oito.place(relx=0.2, rely=0, relwidth=0.2, relheight=0.15)
 
-nove = tkinter.Button(frame2, text="9", command=nove)
+nove = tkinter.Button(frame2, text="9", command=nove_number)
 nove.place(relx=0.4, rely=0, relwidth=0.2, relheight=0.15)
 
-seis = tkinter.Button(frame2, text="6", command=seis)
+seis = tkinter.Button(frame2, text="6", command=seis_number)
 seis.place(relx=0.4, rely=0.15, relwidth=0.2, relheight=0.15)
 
-cinco = tkinter.Button(frame2, text="5", command=cinco)
+cinco = tkinter.Button(frame2, text="5", command=cinco_number)
 cinco.place(relx=0.2, rely=0.15, relwidth=0.2, relheight=0.15)
 
-quatro = tkinter.Button(frame2, text="4", command=quatro)
+quatro = tkinter.Button(frame2, text="4", command=quatro_number)
 quatro.place(relx=0, rely=0.15, relwidth=0.2, relheight=0.15)
 
-três = tkinter.Button(frame2, text="3", command=três)
+três = tkinter.Button(frame2, text="3", command=tres_number)
 três.place(relx=0.4, rely=0.3, relwidth=0.2, relheight=0.15)
 
-dois = tkinter.Button(frame2, text="2", command=dois)
+dois = tkinter.Button(frame2, text="2", command=dois_number)
 dois.place(relx=0.2, rely=0.3, relwidth=0.2, relheight=0.15)
 
-um = tkinter.Button(frame2, text="1", command=um)
+um = tkinter.Button(frame2, text="1", command=um_number)
 um.place(relx=0, rely=0.3, relwidth=0.2, relheight=0.15)
 
-zero = tkinter.Button(frame2, text="0", command=zero)
+zero = tkinter.Button(frame2, text="0", command=zero_number)
 zero.place(relx=0, rely=0.45, relwidth=0.6, relheight=0.15)
 
-def clear():
-    limpar_tela = tkinter.Label(frame1, text='', font=("Arial", 50), background='black', foreground='white')
-    limpar_tela.place(relx=0, rely=0.45, relwidth=0.3, relheight=0.3)
-
-limpar = tkinter.Button(frame2, text="CE", command=clear)
+limpar = tkinter.Button(frame2, text="CE", command=limpar_tela)
 limpar.place(relx=0.6, rely=0, relwidth=0.2, relheight=0.15)
 
 m = tkinter.Button(frame2, text="M")
 m.place(relx=0.8, rely=0, relwidth=0.2, relheight=0.15)
 
-mais = tkinter.Button(frame2, text="+")
+mais = tkinter.Button(frame2, text="+", command=somar)
 mais.place(relx=0.6, rely=0.15, relwidth=0.2, relheight=0.15)
 
-menos = tkinter.Button(frame2, text="-")
+menos = tkinter.Button(frame2, text="-", command='menos')
 menos.place(relx=0.8, rely=0.15, relwidth=0.2, relheight=0.15)
 
-multiplicar = tkinter.Button(frame2, text="x")
+multiplicar = tkinter.Button(frame2, text="x", command='multiplicar')
 multiplicar.place(relx=0.6, rely=0.3, relwidth=0.2, relheight=0.15)
 
-dividir = tkinter.Button(frame2, text="/")
+dividir = tkinter.Button(frame2, text="/", command='dividir')
 dividir.place(relx=0.8, rely=0.3, relwidth=0.2, relheight=0.15)
 
-raiz = tkinter.Button(frame2, text="sqrt")
-raiz.place(relx=0.6, rely=0.45, relwidth=0.2, relheight=0.15)
+igual = tkinter.Button(frame2, text="=", command=result)
+igual.place(relx=0.6, rely=0.45, relwidth=0.2, relheight=0.15)
 
-fatorial = tkinter.Button(frame2, text="!")
-fatorial.place(relx=0.8, rely=0.45, relwidth=0.2, relheight=0.15)
+raiz = tkinter.Button(frame2, text="√", command='raiz')
+raiz.place(relx=0.8, rely=0.45, relwidth=0.2, relheight=0.15)
 
 programa.mainloop()
