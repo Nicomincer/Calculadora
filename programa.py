@@ -14,6 +14,52 @@ frame2.place(rely=0.4, relx=0, relwidth=1, relheight=1)
 escrever_texto1 = tkinter.Label(frame1, text="", font=("Arial", 50), background='black', foreground='white')
 escrever_texto1.place(relx=0, rely=0.1)
 
+def result():
+    a = ''
+    b = ''
+    tamanho = len(escrever_texto1['text'])
+    if '+' in escrever_texto1['text']:
+        position = escrever_texto1['text'].index('+')
+        for c in range(0, position):
+            a += escrever_texto1['text'][c]
+        a = int(a)
+        for i in range(position, tamanho):
+            b += escrever_texto1['text'][i]
+        b = int(b)
+        x = a + b 
+    elif 'x' in escrever_texto1['text']: 
+        position = escrever_texto1['text'].index('x')
+        for c in range(0, position):
+            a += escrever_texto1['text'][c]
+        a = int(a)
+        for i in range(position+1, tamanho):
+            b += escrever_texto1['text'][i]
+        b = int(b)
+        x = a*b
+    
+    elif '/' in escrever_texto1['text']:
+        position = escrever_texto1['text'].index('x')
+        for c in range(0, position):
+            a += escrever_texto1['text'][c]
+        a = int(a)
+        for i in range(position+1, tamanho):
+            b += escrever_texto1['text'][i]
+        b = int(b)
+        x = a/b
+
+    elif '-' in escrever_texto1['text']:
+        position = escrever_texto1['text'].index('-')
+        for c in range(0, position):
+            a += escrever_texto1['text'][c]
+        a = int(a)
+        for i in range(position+1, tamanho):
+            b += escrever_texto1['text'][i]
+        b = int(b)
+        x = a - b
+
+    escrever_texto1['text'] = str(x)
+
+
 def sete_number():
     global resultado
     resultado = resultado+"7"
@@ -62,19 +108,26 @@ def somar():
     resultado = resultado+"+"
     escrever_texto1.configure(text=resultado)
 
+def menos():
+    global resultado
+    resultado = resultado+"-"
+    escrever_texto1.configure(text=resultado)
+
 def limpar_tela():
 
     global resultado
     resultado = ""
     escrever_texto1.configure(text=resultado)
 
-def result():
+def multiplica():
     global resultado
-    a = float(resultado[0:resultado.index("+")])
-    b = float(resultado[resultado.index("+"):len(resultado)])
-    s = a+b
-    escrever_texto1.configure(text=f"{s}")
+    resultado = resultado+"x"
+    escrever_texto1.configure(text=resultado)
 
+def dividi():
+    global resultado
+    resultado = resultado+"/"
+    escrever_texto1.configure(text=resultado)
 
 sete = tkinter.Button(frame2, text="7", command=sete_number)
 sete.place(relx=0, rely=0, relwidth=0.2, relheight=0.15)
@@ -115,13 +168,13 @@ m.place(relx=0.8, rely=0, relwidth=0.2, relheight=0.15)
 mais = tkinter.Button(frame2, text="+", command=somar)
 mais.place(relx=0.6, rely=0.15, relwidth=0.2, relheight=0.15)
 
-menos = tkinter.Button(frame2, text="-", command='menos')
-menos.place(relx=0.8, rely=0.15, relwidth=0.2, relheight=0.15)
+menor = tkinter.Button(frame2, text="-", command=menos)
+menor.place(relx=0.8, rely=0.15, relwidth=0.2, relheight=0.15)
 
-multiplicar = tkinter.Button(frame2, text="x", command='multiplicar')
+multiplicar = tkinter.Button(frame2, text="x", command=multiplica)
 multiplicar.place(relx=0.6, rely=0.3, relwidth=0.2, relheight=0.15)
 
-dividir = tkinter.Button(frame2, text="/", command='dividir')
+dividir = tkinter.Button(frame2, text="/", command=dividi)
 dividir.place(relx=0.8, rely=0.3, relwidth=0.2, relheight=0.15)
 
 igual = tkinter.Button(frame2, text="=", command=result)
@@ -129,5 +182,6 @@ igual.place(relx=0.6, rely=0.45, relwidth=0.2, relheight=0.15)
 
 raiz = tkinter.Button(frame2, text="√", command='raiz')
 raiz.place(relx=0.8, rely=0.45, relwidth=0.2, relheight=0.15)
+
 
 programa.mainloop()
