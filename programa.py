@@ -2,7 +2,7 @@ import tkinter
 from tkinter import Tk
 global escrever_texto1
 global resultado
-
+global memory
 resultado = ""
 programa = Tk()
 programa.title("Calculadora")
@@ -13,6 +13,7 @@ frame2 = tkinter.Frame(programa, bg="white")
 frame2.place(rely=0.4, relx=0, relwidth=1, relheight=1)
 escrever_texto1 = tkinter.Label(frame1, text="", font=("Arial", 50), background='black', foreground='white')
 escrever_texto1.place(relx=0, rely=0.1)
+memory = 0
 
 def result():
     a = ''
@@ -27,6 +28,8 @@ def result():
             b += escrever_texto1['text'][i]
         b = int(b)
         x = a + b 
+        escrever_texto1['text'] = str(x)
+
     elif 'x' in escrever_texto1['text']: 
         position = escrever_texto1['text'].index('x')
         for c in range(0, position):
@@ -36,9 +39,10 @@ def result():
             b += escrever_texto1['text'][i]
         b = int(b)
         x = a*b
+        escrever_texto1['text'] = str(x)
     
     elif '/' in escrever_texto1['text']:
-        position = escrever_texto1['text'].index('x')
+        position = escrever_texto1['text'].index('/')
         for c in range(0, position):
             a += escrever_texto1['text'][c]
         a = int(a)
@@ -46,6 +50,7 @@ def result():
             b += escrever_texto1['text'][i]
         b = int(b)
         x = a/b
+        escrever_texto1['text'] = str(x)
 
     elif '-' in escrever_texto1['text']:
         position = escrever_texto1['text'].index('-')
@@ -56,6 +61,7 @@ def result():
             b += escrever_texto1['text'][i]
         b = int(b)
         x = a - b
+        escrever_texto1['text'] = str(x)
 
     elif '√' in escrever_texto1['text']:
         position = escrever_texto1['text'].index('√')
@@ -64,6 +70,17 @@ def result():
         a = int(a)
         x = a**(1/2)
     escrever_texto1['text'] = str(x)
+
+def memoria():
+    global memory, resultado, s 
+    if memory == 1:
+        escrever_texto1['text'] = escrever_texto1['text']+s
+        memory = 0 
+    else: 
+        memory = 1 
+        s = escrever_texto1['text']
+    
+
 
 
 def sete_number():
@@ -173,7 +190,7 @@ zero.place(relx=0, rely=0.45, relwidth=0.6, relheight=0.15)
 limpar = tkinter.Button(frame2, text="CE", command=limpar_tela)
 limpar.place(relx=0.6, rely=0, relwidth=0.2, relheight=0.15)
 
-m = tkinter.Button(frame2, text="M")
+m = tkinter.Button(frame2, text="M", command=memoria)
 m.place(relx=0.8, rely=0, relwidth=0.2, relheight=0.15)
 
 mais = tkinter.Button(frame2, text="+", command=somar)
