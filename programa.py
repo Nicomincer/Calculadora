@@ -57,6 +57,12 @@ def result():
         b = int(b)
         x = a - b
 
+    elif '√' in escrever_texto1['text']:
+        position = escrever_texto1['text'].index('√')
+        for i in range(position+1, tamanho):
+            a += escrever_texto1['text'][i]
+        a = int(a)
+        x = a**(1/2)
     escrever_texto1['text'] = str(x)
 
 
@@ -129,6 +135,11 @@ def dividi():
     resultado = resultado+"/"
     escrever_texto1.configure(text=resultado)
 
+def raiz():
+    global resultado
+    resultado = resultado+"√"
+    escrever_texto1.configure(text=resultado)
+
 sete = tkinter.Button(frame2, text="7", command=sete_number)
 sete.place(relx=0, rely=0, relwidth=0.2, relheight=0.15)
 
@@ -180,7 +191,7 @@ dividir.place(relx=0.8, rely=0.3, relwidth=0.2, relheight=0.15)
 igual = tkinter.Button(frame2, text="=", command=result)
 igual.place(relx=0.6, rely=0.45, relwidth=0.2, relheight=0.15)
 
-raiz = tkinter.Button(frame2, text="√", command='raiz')
+raiz = tkinter.Button(frame2, text="√", command=raiz)
 raiz.place(relx=0.8, rely=0.45, relwidth=0.2, relheight=0.15)
 
 
